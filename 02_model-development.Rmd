@@ -1,4 +1,4 @@
-# {{{chapter_title}}}
+# Model Development
 
 **Learning objectives:**
 
