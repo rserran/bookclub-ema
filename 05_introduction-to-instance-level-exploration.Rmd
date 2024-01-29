@@ -2,12 +2,35 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Define instance-level exploration methods
+- Break-down plots
+- Shapley additive explanations
+- Local Interpretable Model-agnostic Explanations (LIME)
+- Ceteris-paribus profiles and methods
 
-## SLIDE 1 {-}
+## Instance-level exploration methods
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+Instance-level exploration methods help us understand how a model yields a prediction for a particular single observation.
+
+- Evaluate effects of explanatory variables on the model’s predictions.
+- How would the model’s predictions change if values of some of the explanatory variables changed? (what if analysis)
+- Discover that the model is providing incorrect predictions, and we may want to find the reason.
+
+## Break-down plots (variable attributions)
+
+- Break-down plots for additive attributions (Chapter 6)
+- Break-down plots for interactions (Chapter 7)
+- Shapley additive explanations for average attributions (Chapter 8)
+
+## Local Interpretable Model-agnostic Explanations (LIME)
+
+- Uses the interpretation of the model as a function and investigates the local behavior of this function around the point (observation) of interest $x$
+- "Local model" (Chapter 9)
+
+## Ceteris-paribus profiles and methods
+
+- *Ceteris paribus* is a Latin phrase that translates as "with other conditions remaining the same".
+- Ceteris-paribus profiles show how a model's prediction would change if the value of a single explanatory variable changed. (Chapters 10 - 12)
 
 ## Meeting Videos {-}
 
