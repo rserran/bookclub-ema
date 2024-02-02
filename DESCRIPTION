@@ -10,5 +10,6 @@ Depends:
 Imports: 
     bookdown,
     DALEX,
+    randomForest,
     rmarkdown
 Encoding: UTF-8
