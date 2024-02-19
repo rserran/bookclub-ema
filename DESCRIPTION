@@ -8,8 +8,15 @@ URL: https://r4ds.github.io/bookclub-ema,
 Depends:
     R (>= 3.1.0)
 Imports: 
+    archivist,
     bookdown,
     DALEX,
+    data.table,
+    dplyr,
+    flextable,
+    ggplot2,
+    knitr,
     randomForest,
-    rmarkdown
+    rmarkdown,
+    scales
 Encoding: UTF-8
