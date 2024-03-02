@@ -2,23 +2,239 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Introduce plots break-down plots with interaction terms  
+- Intuition and Examples
+- Calculation Procedure
+- Pros and Cons
+- R Code
 
-## SLIDE 1 {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+## Intuition and Simplified Example  
+  
+#### Overview {-}  
+* Interaction here is defined as the deviation from additivity.  
+* Effects of a given feature depend on other features
+* In this chapter, we focus on pairwise interactions, but can extend to higher order interactions  
+  
+#### Simplified Data Example {-}  
+
+For illustrative purposes, create 2-way table using Titanic Dataset:  
+  
+* Limit to male subpopulation 
+* Bifurcate *Age* variable into "Boys (0-16)" and "Adults (>16)" categories  
+* Simplify *Class* into "2nd" class and "other" levels   
+  
+
+*Table 7.1: Proportion of Male Survivors on Titanic*  
+
+|Class  |     Boys (0-16)|       Adults (>16)|            Total|
+|:------|---------------:|------------------:|----------------:| 
+|2nd    |   11/12 = 91.7%|      13/166 = 7.8%|   24/178 = 13.5%|
+|other  |   22/69 = 31.9%|   306/1469 = 20.8%| 328/1538 = 21.3%|
+|Total  |   33/81 = 40.7%|   319/1635 = 19.5%| 352/1716 = 20.5%|     
+  
+  
+#### Explain Survival Probability for Boys in 2nd Class {-}  
+  
+**Additive Explanation 1**  
+  
+* Marginal survival probability for 2nd class is 13.5%, so additive effect of class for this instance is -7% (13.5% - 20.5%) from mean.    
+* Survival probability for boys in 2nd class is 91.7%, so additive effect of boys is 78.2% (91.7% - 13.5%)  
+  
+**Additive Explanation 2**  
+  
+* Probability of survival for boys is 40.7%, so additive effect of boys from the mean is 20.2% (40.7% - 20.5%)  
+* 2nd class survival chance for boys is 91.7%. Therefore, the 2nd class additive effect is 51% (91.7% - 40.7%)   
+  
+**Interaction Explanation**  
+  
+* Additive explanations give different effects depending on order due to interaction
+* In other words, class depends on age and vice versa
+* Calculate Interaction effect  
+  + Calculate contribution of 2nd class/Boys together: (91.7% - 20.5% = 71.2%) 
+  + Subtract individual variable contributions to calculate net interaction effect: (71.2% - (-7%) - 20.2%), or 58%,  
+* If there were no interaction effects, the probability of survival could be calculated the mean be the mean survival rate + individual variable effects (i.e., 20.5% -7% + 20.2% = 33.7%). However, this is incorrect here due to the presence of the class/age interaction.   
+
+
+## Method to Calculate Net Interaction Effects  
+  
+Three step process:  
+
+1. Compute additive contribution of each variable (i.e., deviation from global mean)  
+2. Calculate net effect of interaction for each pairwise combination:  
+    - Determine the contribution for each pair of explanatory variables, PC (paired contribution) 
+    - Compute additive contribution for single variable 1, SC1 (single contribution 1)  
+    - Calculate additive contribution for single variable 2, SC2 (single contribution 2)  
+    - Putting together, net interaction effect = PC - SC1 - SC2  
+
+3. Rank contributions for both individual variables and pairwise interactions using the absolute value of the contribution effects. Use ranking for ordering variable importance calculations. 
+  
+## Realistic Example Using Titanic Dataset  
+  
+This section shows manual calculations of variable importance using a random forest model on the Titanic dataset.  
+  
+The explanations relate to fictitious passenger, Johnny D, described in an earlier chapter.  
+
+  
+*Table 7.2: Variable and Interaction Contributions*
+
+Column descriptions:  
+  
+* Column 1 - Variable or paired variable  
+* Column 2 - Paired-variable contributions  
+* Column 3 - Net interaction effect - calculated using columns 2 and 4
+* Column 4 - Single variable contributions
+
+|Variable        | $\Delta^{\{i,j\}|\emptyset}(\underline{x}_*)$ | $\Delta_{I}^{\{i,j\}}(\underline{x}_*)$|$\Delta^{i|\emptyset}(\underline{x}_*)$ |
+|:---------------|------:|---------:|------:|
+|age             |       |          |  0.270|
+|fare:class      |  0.098|    -0.231|       |
+|class           |       |          |  0.185|
+|fare:age        |  0.249|    -0.164|       |
+|fare            |       |          |  0.143|
+|gender          |       |          | -0.125|
+|age:class       |  0.355|    -0.100|       |
+|age:gender      |  0.215|     0.070|       |
+|fare:gender     |       |          |       |
+|embarked        |       |          | -0.011|
+|embarked:age    |  0.269|     0.010|       |
+|parch:gender    | -0.136|    -0.008|       |
+|sibsp           |       |          |  0.008|
+|sibsp:age       |  0.284|     0.007|       |
+|sibsp:class     |  0.187|    -0.006|       |
+|embarked:fare   |  0.138|     0.006|       |
+|sibsp:gender    | -0.123|    -0.005|       |
+|fare:parch      |  0.145|     0.005|       |
+|parch:sibsp     |  0.001|    -0.004|       |
+|parch           |       |          | -0.003|
+|parch:age       |  0.264|    -0.002|       |
+|embarked:gender | -0.134|     0.002|       |
+|embarked:parch  | -0.012|     0.001|       |
+|fare:sibsp      |  0.152|     0.001|       |
+|embarked:class  |  0.173|    -0.001|       |
+|gender:class    |  0.061|     0.001|       |
+|embarked:sibsp  | -0.002|     0.001|       |
+|parch:class     |  0.183|     0.000|       |
+  
+  
+**Example Calculation for Net Interaction Effect of Age:Fair**  
+
+* *fare* contribution (column 4) = 0.143
+* *age* contribution (column 4) = 0.270  
+* *fair:age* contribution (column 2) = 0.249
+* Net interaction = 0.249 - 0.143 - 0.270 = -0.164  
+  
+  
+**Steps for Calculating Variable Importance Tables and Breakdown Plots**  
+
+1. Rank and sort variables and interaction net effects according to absolute value of contributions--see Table 2.  
+2. Each variable should only appear once, either as a single variable or as part of an interaction effect. Keep top contribution only.  
+3. Calculate variable importance measure as described in chapter six
+
+
+*Table 7.3: Variable-Importance Measures*  
+
+|Variable               |  $j$ | $v(j,\underline{x}_*)$ | $v_0+\sum_{k=1}^j v(k,\underline{x}_*)$|
+|:----------------------|------:|------------:|-----------:|
+|intercept  ($v_0$)     |       |             |   0.235    |
+|age = 8                |   1   |    0.269    |   0.505    |
+|fare:class = 72:1st    |   2   |    0.039    |   0.544    |
+|gender = male          |   3   |   -0.083    |   0.461    |
+|embarked = Southampton |   4   |   -0.002    |   0.458    |
+|sibsp = 0              |   5   |   -0.006    |   0.452    |
+|parch = 0              |   6   |   -0.030    |   0.422    |
+  
+  
+Below is the break-down plot.  
+
+*![Source: Figure 7.1](img/07-ibd-plots/johnny_d_ibd_plot.png)*
+
+  
+## Pros and Cons   
+
+**Pros**  
+
+* Model agnostic approach  
+* Can potentially provide more accurate explanations than additive effects only
+* Plots can be easy to interpret in many cases  
+
+**Cons**  
+
+* Calculation complexity -  need to calculate contributions for p(p+1)/2 variables and pairwise interactions
+* Credibility issues - for small datasets, net contributions are subject to larger randomness in ranking  
+* Procedure is not based on formal statistical test of significance and relies on heuristics.
+  + false positives  
+  + false negatives - more likely with small samples  
+* With many variables and interactions, plots can be complex with small contributions to instance prediction
+
+## R Code Examples  
+  
+Example uses titanic dataset, and new instance of a fictitious passenger, Henry.  
+  
+We're also using the DALEX package to explain predictions from a pre-loaded random forest model.
+  
+Load the data.
+
+```{r 07-load-data}
+titanic_imputed <- archivist::aread("pbiecek/models/27e5c")
+titanic_rf <- archivist:: aread("pbiecek/models/4e0fc")
+(henry <- archivist::aread("pbiecek/models/a6538"))
+
+```
+ 
+
+Build explainer from DALEX library.  
+```{r 07-build-explainer, warning=FALSE}
+
+library(DALEX)
+library(randomForest)
+
+
+explain_rf <- DALEX::explain(model = titanic_rf,  
+                        data = titanic_imputed[, -9],
+                           y = titanic_imputed$survived == "yes", 
+                       label = "Random Forest")
+
+```
+Calculate contributions of top variables.  
+
+```{r 07-var-contributions} 
+bd_rf <- predict_parts(explainer = explain_rf,
+                 new_observation = henry,
+                            type = "break_down_interactions")
+bd_rf
+
+```
+  
+Output break-down plot.  
+```{r 07-ibd-plot}  
+plot(bd_rf)
+
+```
+  
+Compare to break-down plot without interactions.  
+  
+```{r 07-bd-plot}
+bd_rf_noint <- predict_parts(explainer = explain_rf,
+                 new_observation = henry,
+                            type = "break_down")
+plot(bd_rf_noint)
+```
 
 ## Meeting Videos {-}
 
 ### Cohort 1 {-}
 
-`r knitr::include_url("https://www.youtube.com/embed/URL")`
+`r knitr::include_url("https://www.youtube.com/embed/KZ9lr9jeMUE")`
 
 <details>
 <summary> Meeting chat log </summary>
 
 ```
-LOG
+0:05:28    Angel Feliz:    start
+00:57:22    Aaron G:    https://christophm.github.io/interpretable-ml-book/
+00:57:26    Aaron G:    interpretable machine book
+00:58:01    Aaron G:    *interpretable machine learning book
+01:00:04    Angel Feliz:    end
 ```
 </details>
