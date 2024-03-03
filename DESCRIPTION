@@ -18,5 +18,6 @@ Imports:
     knitr,
     randomForest,
     rmarkdown,
+    rms,
     scales
 Encoding: UTF-8
