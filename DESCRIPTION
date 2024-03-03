@@ -16,7 +16,9 @@ Imports:
     flextable,
     ggplot2,
     knitr,
+    patchwork,
     randomForest,
     rmarkdown,
+    rms,
     scales
 Encoding: UTF-8
