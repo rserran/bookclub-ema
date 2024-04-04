@@ -1,15 +1,15 @@
-# R4DS Explanatory Model Analysis Book Club
+# DSLC Explanatory Model Analysis Book Club
 
-Welcome to the R4DS Explanatory Model Analysis Book Club!
+Welcome to the DSLC Explanatory Model Analysis Book Club!
 
 We are working together to read [_Explanatory Model Analysis_](https://ema.drwhy.ai/) by Przemyslaw Biecek and Tomasz Burzykowski (copyright 2021).
-If you would like a print version, please consider purchasing it using our [Amazon Affiliates link](https://www.routledge.com/Explanatory-Model-Analysis-Explore-Explain-and-Examine-Predictive-Models/Biecek-Burzykowski/p/book/9780367135591). All profits from purchases through that link go toward maintaining the R4DS Online Learning Community.
-Join the [#book_club-ema](https://rfordatascience.slack.com/archives/C069Y0UDYU9) channel on the [R4DS Slack](https://r4ds.io/join) to participate.
-As we read, we are producing [notes about the book](https://r4ds.io/ema).
+If you would like a print version, please consider purchasing it using our [Amazon Affiliates link](https://www.routledge.com/Explanatory-Model-Analysis-Explore-Explain-and-Examine-Predictive-Models/Biecek-Burzykowski/p/book/9780367135591). All profits from purchases through that link go toward maintaining the Data Science Learning Community.
+Join the [#book_club-ema](https://dslcio.slack.com/archives/C069Y0UDYU9) channel on the [DSLC Slack](https://dslc.io/join) to participate.
+As we read, we are producing [notes about the book](https://dslc.io/ema).
 
 ## Meeting Schedule
 
-If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ema](https://rfordatascience.slack.com/archives/C069Y0UDYU9) channel on Slack)!
+If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ema](https://dslcio.slack.com/archives/C069Y0UDYU9) channel on Slack)!
 
 - [Cohort 1](https://docs.google.com/spreadsheets/d/1vGnIw4y2QydGYPjUrPJlToawhLpwDpRPj-yjPl2KZIQ/edit?usp=sharing) (starts 2024-01-14, facilitated by Angel Feliz): [Sundays, 2:00 PM CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20240114T200000&p1=24&p2=44&p3=1440) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGi2hzcx-pjw4Ds5EednfnTK)
 
@@ -40,7 +40,7 @@ Do these steps each time you present another chapter:
 10. When your PR has been accepted ("merged"), `usethis::pr_finish()` to close out your branch and prepare your local repository for future work.
 11. Now that your local copy is up-to-date with the main repo, you need to update your remote fork. Run `gert::git_push("origin")` or click the `Push` button on the `Git` tab of Rstudio.
 
-When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://r4ds.io/ema).
+When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://dslc.io/ema).
 
 
 ## Code of Conduct
