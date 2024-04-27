@@ -2,12 +2,20 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+-  Dataset-level (global) explanations
+-  Understand how do the model predictions perform overall
+-  Model variable importance
+-  Understand how does a selected variable influence the model’s predictions
+-  Discover whether there are observations where the model yields wrong predictions
 
-## SLIDE 1 {-}
+## Part III - Contents
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+-  Model overall performance measures (`Chapter 15`)
+-  Variable importance measures (`Chapter 16`)
+-  Partial-dependence  profiles (`Chapter 17`)
+-  Local-dependence and accumulated-local profiles (`Chapter 18`)
+-  Residuals diagnostics plots (`Chapter 19`)
+-  Summary of dataset-level exploration (`Chapter 20`)
 
 ## Meeting Videos {-}
 
