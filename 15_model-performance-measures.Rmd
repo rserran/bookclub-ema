@@ -64,17 +64,18 @@ library("rms")
 library("randomForest")
 library("DALEX")
 
-explain_lmr <- explain(model = titanic_lmr, 
-                       data = titanic_imputed[, -9],
-                       y = titanic_imputed$survived == "yes", 
-                       type = "classification",
-                       label = "Logistic Regression")
+# explain_lmr <- explain(model = titanic_lmr, 
+#                        data = titanic_imputed[, -9],
+#                        y = titanic_imputed$survived == "yes", 
+#                        type = "classification",
+#                        label = "Logistic Regression")
+explain_lmr <- readRDS("./explainers/explain_lmr.rds")
 
-
-explain_rf <- explain(model = titanic_rf,  
-                      data = titanic_imputed[, -9],
-                      y = titanic_imputed$survived == "yes", 
-                      label = "Random Forest")
+# explain_rf <- explain(model = titanic_rf,  
+#                       data = titanic_imputed[, -9],
+#                       y = titanic_imputed$survived == "yes", 
+#                       label = "Random Forest")
+explain_rf <- readRDS("./explainers/explain_rf.rds")
 ```
 
 Function `model_performance()` calculates, by default, a set of selected model-performance measures.
