@@ -25,5 +25,6 @@ Imports:
     randomForest,
     rmarkdown,
     rms,
-    scales
+    scales,
+    tree
 Encoding: UTF-8
