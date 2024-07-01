@@ -11,7 +11,7 @@ As we read, we are producing [notes about the book](https://dslc.io/ema).
 
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-ema](https://dslcio.slack.com/archives/C069Y0UDYU9) channel on Slack)!
 
-- [Cohort 1](https://docs.google.com/spreadsheets/d/1vGnIw4y2QydGYPjUrPJlToawhLpwDpRPj-yjPl2KZIQ/edit?usp=sharing) (starts 2024-01-14, facilitated by Angel Feliz): [Sundays, 2:00 PM CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20240114T200000&p1=24&p2=44&p3=1440) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGi2hzcx-pjw4Ds5EednfnTK)
+- Cohort 1 (began 2024-01-14, finished 2024-06-23, facilitated by Angel Feliz): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGi2hzcx-pjw4Ds5EednfnTK)
 
 <hr>
 

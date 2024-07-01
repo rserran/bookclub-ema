@@ -168,7 +168,7 @@ Solution:
 * Examples below use K-LASSO for glass-box model  
   
 
-```{r load-data, warning=FALSE,message=FALSE}
+```{r 09-load-data, warning=FALSE,message=FALSE}
 # core libraries
 library(randomForest)
 library(DALEX)
