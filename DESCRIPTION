@@ -6,7 +6,9 @@ Authors@R:
 URL: https://r4ds.github.io/bookclub-ema,
     https://github.com/r4ds/bookclub-ema
 Depends:
-    R (>= 3.1.0)
+    R (>= 3.1.0),
+    tidymodels,
+    tidyverse
 Imports: 
     archivist,
     bookdown,
@@ -14,7 +16,11 @@ Imports:
     DALEXtra,
     data.table,
     dplyr,
+    DT,
+    e1071,
     flextable,
+    gbm,
+    GGally,
     ggplot2,
     iml,
     kableExtra,
@@ -23,6 +29,7 @@ Imports:
     localModel,
     patchwork,
     randomForest,
+    ranger,
     rmarkdown,
     rms,
     scales,
